@@ -6,5 +6,6 @@ import sys
 from eventfeed import EventFeed
 
 def index(request):
-	e = EventFeed()
-	e.get_feed()
+	ef = EventFeed()
+	feed = ef.get_feed()
+	return render_to_response('index.html', {'feed': feed})
