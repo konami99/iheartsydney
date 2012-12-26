@@ -9,6 +9,7 @@ from BeautifulSoup import BeautifulSoup
 import simplejson as json, urllib, pprint
 import feedparser
 import pprint
+from BeautifulSoup import Tag
 
 def index(request):
 	ef = EventFeed()
@@ -49,9 +50,10 @@ def detail(request, namespace):
 	xmldoc = BeautifulSoup(urllib.urlopen(url))
 	
 	title = xmldoc.query.results.h1.string
-	des = xmldoc.query.results.findAll("div","description",limit=1)[0].p.string
+	des = xmldoc.query.results.find("div","description").findAll('p')
+	Tag.do_not_call_in_templates = True
 	
-	pprint.pprint(des)
+	pprint.pprint(type(des))
 	
 	return render_to_response('detail.html', {'title': title, 'result': des})
 	
