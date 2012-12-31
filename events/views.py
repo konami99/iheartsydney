@@ -7,7 +7,7 @@ from xml.dom import minidom
 from eventfeed import EventFeed
 from BeautifulSoup import BeautifulSoup
 import simplejson as json, urllib, pprint
-import feedparser
+#import feedparser
 import pprint
 from BeautifulSoup import Tag
 
